@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Pizza Mania</h3>
+    </div>
+    
+    <form #formulaire="ngForm">
+      <div class="panel-body">
+        <div class="form-inline marg-bot">
+          <div class="form-group">
+
+            <label for="pate">Type de pate : </label>
+
+            <select class="form-control" id="pate">
+              <option *ngFor='let pate of pizza.pate'>{{pate}}</option>
+            </select>
+          </div> 
+        </div> 
+
+          <div class="form-group">
+            <label>Base : </label>
+            <label class ="radio-inline" *ngFor='let base of pizza.base | mapKVPipe'> 
+              <input type="radio" id='{{base.key}}' name="base" (change)="onBaseChange(base.value)"  />
+              {{base.key}} {{base.value}} €
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label>Ingrédients : </label>
+            <label class ="checkbox-inline" *ngFor='let ingredient of pizza.ingredients| mapKVPipe' [attr.data-index]="i"> 
+              <input type="checkbox" id='{{ingredient.key}}' name="ingred" [(ngModel)] = "pizza.ingredientCoche[ingredient.key]"
+                (change)="onIngredientChange(pizza.ingredientCoche[ingredient.key],ingredient.value)" />
+              {{ingredient.key}} {{ingredient.value}} €
+            </label>
+          </div>
+          
+          <div class="form-inline">
+            <label>Prix : </label>
+            <span class="form-control">{{pizza.prix}}</span> €
+          </div>
+      </div>
+
+      <div class="panel-footer">
+        <button type="button" class="btn btn-primary"> Commander </button>
+      </div> 
+    </form>
+  </div>
+</div>
+
+{{lol}}

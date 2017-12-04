@@ -3,16 +3,26 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import { HeaderComponent } from './header/header.component';
+import { PizzaComponent } from './pizza/pizza.component';
+import { FormsModule } from '@angular/forms';
+import { mapKVPipe } from './pipes/mapKVPipe.pipes';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    PizzaComponent,
+    mapKVPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[
+    mapKVPipe
+  ]
 })
 export class AppModule { }
